@@ -1074,4 +1074,30 @@ spec:
           serviceName: app3
           servicePort: 80
 
-
+### Deploy Arcadia Ingress Service #####
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: arcadia-rocks-ingress
+spec:
+  rules:
+  - host: arcadia.nginx.rocks
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: main
+          servicePort: 80
+      - path: /files
+        backend:
+          serviceName: backend
+          servicePort: 80
+      - path: /api
+        backend:
+          serviceName: app2
+          servicePort: 80
+      - path: /app3
+        backend:
+          serviceName: app3
+          servicePort: 80
